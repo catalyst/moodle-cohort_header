@@ -26,11 +26,10 @@ defined('MOODLE_INTERNAL') || die();
 require_once($CFG->dirroot . '/admin/tool/cohortheader/locallib.php');
 
 /**
- * Add data to head.
+ * Get additional HTML for head.
  * @return string $line
  */
-function tool_cohortheader_before_standard_html_head() {
-
+function tool_cohortheader_get_additional_html_head() {
     $line = '';
     $cohortheaders = tool_cohortheader_get_headers();
 
@@ -45,11 +44,10 @@ function tool_cohortheader_before_standard_html_head() {
 }
 
 /**
- * Add data to footer.
+ * Get additional HTML for footer.
  * @return string $line
  */
-function tool_cohortheader_before_footer() {
-    global $PAGE;
+function tool_cohortheader_get_additional_html_footer() {
     $line = '';
     $cohortheaders = tool_cohortheader_get_headers();
 
@@ -65,10 +63,10 @@ function tool_cohortheader_before_footer() {
 }
 
 /**
- * Add data to top of body.
+ * Get additional HTML for top of body.
  * @return string $line
  */
-function tool_cohortheader_before_standard_top_of_body_html() {
+function tool_cohortheader_get_additional_html_body() {
     $line = '';
     $cohortheaders = tool_cohortheader_get_headers();
 
@@ -81,4 +79,40 @@ function tool_cohortheader_before_standard_top_of_body_html() {
     }
 
     return $line;
+}
+
+// Only define these functions if we're not using the new hook system
+if (!class_exists('\core\hook\output\before_standard_head_html_generation')) {
+    /**
+     * Legacy callback for adding data to head.
+     * @return string
+     */
+    function tool_cohortheader_before_standard_html_head() {
+        global $CFG;
+        unset($CFG->editingicon);
+
+        return tool_cohortheader_get_additional_html_head();
+    }
+
+    /**
+     * Legacy callback for adding data to footer.
+     * @return string
+     */
+    function tool_cohortheader_before_footer() {
+        global $CFG, $PAGE;
+        unset($CFG->editingicon);
+
+        return tool_cohortheader_get_additional_html_footer();
+    }
+
+    /**
+     * Legacy callback for adding data to top of body.
+     * @return string
+     */
+    function tool_cohortheader_before_standard_top_of_body_html() {
+        global $CFG;
+        unset($CFG->editingicon);
+
+        return tool_cohortheader_get_additional_html_body();
+    }
 }
