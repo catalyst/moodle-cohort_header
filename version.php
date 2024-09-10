@@ -25,7 +25,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'tool_cohortheader';
-$plugin->release = '0.4.3';
-$plugin->version = 2024090901;
-$plugin->requires = 2021010800;
+$plugin->release = '0.5.0';
+$plugin->version = 2024090902;
+$plugin->requires = 2023100900; // Moodle 4.4
 $plugin->maturity = MATURITY_STABLE;

@@ -1,16 +1,8 @@
 # Cohort based additional html settings #
 
-This plugin was developed thanks to funding from Xi'an Jiaotong-Liverpool University (https://www.xjtlu.edu.cn)
+This plugin was developed thanks to funding from Xi’an Jiaotong-Liverpool University (https://www.xjtlu.edu.cn)
 
 This plugin allows the site administrator to add html to the header or footer of a site based on the users site-level cohorts similar to the core additionalhtml settings.
-
-## Compatibility ##
-
-As of version 0.4.3, this plugin is compatible with:
-- From Moodle 3.10 to 4.3 (using legacy callbacks)
-- Moodle 4.4 (using the new hook system)
-
-The plugin will automatically use the appropriate system based on the Moodle version it's installed on.
 
 ## Installing via uploaded ZIP file ##
 
@@ -34,15 +26,6 @@ Alternatively, you can run
     $ php admin/cli/upgrade.php
 
 to complete the installation from the command line.
-
-## Usage ##
-
-After installation:
-
-1. Go to Site administration > Appearance > Apply cohort headers
-2. Add new cohort headers or edit existing ones
-3. Specify the cohorts for which the custom HTML should be applied
-4. Add your custom HTML for the head, top of body, or footer sections
 
 ## License ##
 

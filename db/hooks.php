@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Cohorts header - Hooks definition
+ * Hook callbacks for Cohort Header tool
  *
  * @package   tool_cohortheader
  * @copyright Catalyst IT 2021
@@ -24,17 +24,17 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$hooks = [
+$callbacks = [
     [
         'hook' => \core\hook\output\before_standard_head_html_generation::class,
-        'callback' => [\tool_cohortheader\hooks::class, 'before_standard_head_html'],
-    ],
-    [
-        'hook' => \core\hook\output\before_footer::class,
-        'callback' => [\tool_cohortheader\hooks::class, 'before_footer'],
+        'callback' => [\tool_cohortheader\hooks_callbacks::class, 'before_standard_head_html'],
     ],
     [
         'hook' => \core\hook\output\before_standard_top_of_body_html_generation::class,
-        'callback' => [\tool_cohortheader\hooks::class, 'before_standard_top_of_body_html'],
+        'callback' => [\tool_cohortheader\hooks_callbacks::class, 'before_standard_top_of_body_html'],
+    ],
+    [
+        'hook' => \core\hook\output\before_footer_html_generation::class,
+        'callback' => [\tool_cohortheader\hooks_callbacks::class, 'before_footer_html'],
     ],
 ];
