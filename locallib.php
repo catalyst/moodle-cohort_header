@@ -153,18 +153,15 @@ function tool_cohortheader_delete_cohortheader($cohortheader) {
  * @return $headers
  */
 function tool_cohortheader_get_headers() {
-
     global $USER, $DB;
     static $headers = null;
 
     if (is_null($headers)) {
-
-        $sql =
-            "SELECT DISTINCT ch.*
-               FROM {tool_cohortheader} ch
-               JOIN {tool_cohortheader_cohort} chc ON chc.cohortheaderid = ch.id
-               LEFT JOIN {cohort_members} cm ON cm.cohortid = chc.cohortid
-               WHERE cm.userid = ?";
+        $sql = "SELECT DISTINCT ch.*
+                FROM {tool_cohortheader} ch
+                JOIN {tool_cohortheader_cohort} chc ON chc.cohortheaderid = ch.id
+                LEFT JOIN {cohort_members} cm ON cm.cohortid = chc.cohortid
+                WHERE cm.userid = ?";
 
         $headers = $DB->get_records_sql($sql, array($USER->id));
     }

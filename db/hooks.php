@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Cohorts header - lib file
+ * Hook callbacks for Cohort Header tool
  *
  * @package   tool_cohortheader
  * @copyright Catalyst IT 2021
@@ -23,6 +23,18 @@
  */
 
 defined('MOODLE_INTERNAL') || die();
-require_once($CFG->dirroot . '/admin/tool/cohortheader/locallib.php');
 
-// We removed the old functions because they were replaced by hook callbacks.
+$callbacks = [
+    [
+        'hook' => \core\hook\output\before_standard_head_html_generation::class,
+        'callback' => [\tool_cohortheader\hooks_callbacks::class, 'before_standard_head_html'],
+    ],
+    [
+        'hook' => \core\hook\output\before_standard_top_of_body_html_generation::class,
+        'callback' => [\tool_cohortheader\hooks_callbacks::class, 'before_standard_top_of_body_html'],
+    ],
+    [
+        'hook' => \core\hook\output\before_footer_html_generation::class,
+        'callback' => [\tool_cohortheader\hooks_callbacks::class, 'before_footer_html'],
+    ],
+];
